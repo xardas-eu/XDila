@@ -77,3 +77,11 @@ display: none;
     margin-bottom: 4px;
     padding: 4px;
 }
+
+.bank-buttons button {
+    width: 70px;
+}
+
+.has-error {
+    background-color: #ffaaaa;
+}

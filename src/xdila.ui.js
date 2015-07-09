@@ -13,6 +13,10 @@ XDila.UI = function () {
             type = 'success';
         }
 
+        if(type=='error') {
+            type = 'danger';
+        }
+
 
         // @TODO dodac **cos** itd ..!!!
         var ticker = this.root.find('.notification-ticker');
@@ -45,6 +49,9 @@ XDila.UI = function () {
         this.ui_elements['player-debt'].html(this.game.Player.Bank.debt);
         this.ui_elements['player-bank'].html(this.game.Player.Bank.bank);
         this.ui_elements['player-respect'].html(this.game.Player.respect);
+
+        this.ui_elements['player-health'].html(this.game.Player.health+'%');
+        this.ui_elements['player-health-bar'].css('width',this.game.Player.health+'%');
     };
 
     this._renderCities = function () {
@@ -58,6 +65,11 @@ XDila.UI = function () {
 
             tab.attr('id','city-tab-'+cityName);
             tab.find('a').data('city-name',cityObj.internal_name).attr('href', '#city-' + cityName).html(cityObj.name).click(function(){
+
+
+                // @TODO think about this
+                //Game.game.UI.ui_elements['tab-drugs-link'].click();
+
                 Game.game.goToCity(Game.game.cities[$(this).data('city-name')]);
             });
             tabs.append(tab);
@@ -134,6 +146,99 @@ XDila.UI = function () {
         return table;
     }
 
+    this.setInputError = function(field,error,message) {
+    };
+
+
+    this.bankUpdate = function() {
+        var bank = this.game.Player.Bank;
+        var self = this;
+
+        var deposit_element = this.ui_elements['bank-deposit'];
+        var withdraw_element = this.ui_elements['bank-withdraw'];
+        var repay_element = this.ui_elements['bank-repay'];
+        var loan_element = this.ui_elements['bank-loan'];
+
+
+        var amountTransferer = function(bank,field) {
+            return function () {
+                var val = parseInt($(this).closest('div').find('input').val());
+                switch(field) {
+                    case 'deposit':
+                        bank.store(val);
+                        break;
+                    case 'repay':
+                        bank.repay(val);
+                        break;
+                    case 'withdraw':
+                        bank.withdraw(val);
+                        break;
+                    case 'loan':
+                        bank.loan(val);
+                        break;
+                }
+            }
+        };
+
+        var amountValidator = function(bank,field) {
+            return function() {
+                var parent = $(this).parent();
+                var pay = $(this).val();
+                var own = 0;
+                switch(field) {
+                    case 'deposit':
+                    case 'repay':
+                        own = bank.cash;
+                        break;
+                    case 'withdraw':
+                        own = bank.bank;
+                        break;
+                    case 'loan':
+                        own = bank.cash*2;
+                        break;
+                }
+
+                if(pay<=own){
+                    $(this).removeClass('has-error');
+                    parent.find('button').prop('disabled',false);
+                    return true;
+                }
+
+                $(this).addClass('has-error');
+                parent.find('button').prop('disabled',true);
+                return false;
+            }
+        };
+
+
+        var element_collection = [deposit_element,withdraw_element,repay_element,loan_element];
+        $.each(element_collection,function(k,element) {
+            var input = element.find('input');
+            input.unbind().change(amountValidator(bank,input.attr('data-field')));
+            input.keyup(function(){
+                $(this).trigger('change')
+            });
+            element.find('button').prop('disabled',true).unbind().click(amountTransferer(bank,input.attr('data-field')));
+            input.trigger('change');
+            element.hide();
+        });
+
+        if(bank.cash) {
+            deposit_element.show();
+        }
+
+        if(bank.bank) {
+            withdraw_element.show();
+        }
+
+        if(bank.debt) {
+            repay_element.show();
+        } else {
+            loan_element.show();
+        }
+
+
+    };
 
     this.renderOwnDrugTab = function(data) {
         var element = this.ui_elements['tab-drugs'].find('div');

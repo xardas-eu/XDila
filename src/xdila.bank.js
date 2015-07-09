@@ -13,7 +13,7 @@ XDila.Bank = function (player) {
     this.game.dispatcher.register('game.new-day.before',function(event){
         // CAPITALIZE
         var self = event.caller().Player.Bank;
-        self.bank                   += Math.floor(self.bank*self._bankInterest);
+        self.bank                   += Math.ceil(self.bank*self._bankInterest);
         self.debt                   += Math.ceil(self.debt*self._debtInterest);
         event.caller().UI.update();
     });
@@ -21,6 +21,9 @@ XDila.Bank = function (player) {
 
     this.update = function() {
         this.game.UI.update();
+
+        // bank update is expensive so it's done separately
+        this.game.UI.bankUpdate();
     };
 
 
@@ -87,8 +90,11 @@ XDila.Bank = function (player) {
     };
 
     this.repay = function(amount) {
+        if(amount>this.debt) {
+            amount = this.debt; // we're all human
+        }
         this.debt -= amount;
-        this.bank -= amount;
+        this.cash -= amount;
         this.update();
     }
 

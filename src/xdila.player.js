@@ -16,6 +16,27 @@ XDila.Player = function (name,game) {
      */
     this.game = null;
 
+    this.decreaseLife = function(hp,msg) {
+        if(this.health-hp < 1) {
+            this.dead();
+        }
+
+        this.health -= hp;
+        this.update();
+        if(msg) {
+            this.game.UI.notify(msg,'error');
+        }
+    };
+
+    this.heal = function(hp) {
+       this.health = hp;
+        this.update();
+    };
+
+    this.dead = function() {
+        // i dunno
+        this.game.gameOver(); // ???
+    }
 
     this.buyDrugs = function(drug,amount,price) {
         if(typeof(this.drugs[drug])=='undefined') {

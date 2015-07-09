@@ -32,9 +32,12 @@ $(document).ready(function(){
 
             // PAYING FOR TRANSPORT
             dispatcher.register('game.new-day.after', function(event) {
+                if(self.game.day==1) {
+                    return true;
+                }
                 if(!player.Bank.canPayCash(self._transportCost)) {
                     player.addOrTakeRespect(self._transportRespectCost);
-                    UI.notify('You REALLY can\'t afford the bus?','error'); // @TODO check if car
+                    UI.notify('You REALLY couldn\'t afford the bus, huh?','error'); // @TODO check if has car
                     return true;
                 }
 

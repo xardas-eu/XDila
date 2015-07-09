@@ -21,15 +21,15 @@
     <script src="vendor/jquery.bootgrid/jquery.bootgrid.min.js" type="text/javascript"></script>
 
     <script src="vendor/notify.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="maxdila.css"/>
+    <link rel="stylesheet" href="assets/xdila.css"/>
 
-    <script src="maxdila.js" type="text/javascript"></script>
+    <script src="src/xdila.js" type="text/javascript"></script>
     <script src="init.js" type="text/javascript"></script>
 </head>
 <body>
 
 
-<div id="maxdila">
+<div id="xdila">
     <div id="splash"></div>
     <div id="start">
         <label for="game_time">Game duration</label>
@@ -177,7 +177,7 @@
     $(document).ready(function () {
         Game.initialize();
         $('#start-button').click(function () {
-            Game.start($('#maxdila'), $('#game_time'));
+            Game.start($('#xdila'), $('#game_time'));
         });
     });
 </script>

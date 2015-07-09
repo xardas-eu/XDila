@@ -1,3 +1,7 @@
+/**
+ * This is a wrapper for the XDila game engine to bootstrap and start the game.
+ * @type {{rootElement: null, game: null, _init: Function, initialize: Function, start: Function}}
+ */
 var Game = {
     rootElement: null,
     game: null,

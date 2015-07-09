@@ -1,0 +1,79 @@
+#maxdila {
+    width: 1000px;
+    height: 700px;
+    padding: 0;
+    margin: 10px auto;
+    border: 1px green solid;
+    border-radius: 3px;
+    position: relative;
+}
+
+#start {
+    position: absolute;
+    top: 320px;
+    left: 440px;
+}
+
+.board {
+display: none;
+}
+
+.notification-box {
+    padding: 5px;
+    border: 1px silver solid;
+    width: 95%;
+    margin: 10px auto;
+}
+
+.notification-ticker {
+    height: 260px;
+    overflow-y: scroll;
+    width: 100%;
+    padding: 0;
+}
+
+.notification-ticker .notification-item {
+    margin: 3px;
+    padding: 3px;
+    width: 100%;
+    border: 1px green solid; /* default */;
+    background-color: #91ffb8;
+}
+
+.alert {
+    display: none;
+}
+
+.page-header h2 {
+    margin: 0;
+}
+
+.current-day, .game-duration {
+    background-color: #bbb;
+}
+
+.current-day p, .game-duration p {
+    color: #333 !important;
+}
+
+.nav p span { font-weight: bold;}
+
+.nav li h2 {
+    padding: 10px 0 0 25px !important;
+    margin: 0 0 0 0 !important;
+}
+
+.respect-stat { background-color: black;}
+.respect-stat p { color: #eee !important;}
+
+
+.debt-stat { background-color: red;}
+.debt-stat p { color: #fdd !important;}
+
+.cash-stat { background-color: green;}
+.cash-stat p { color: #cfc !important;}
+
+.xdila-alert {
+    margin-bottom: 4px;
+    padding: 4px;
+}

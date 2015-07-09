@@ -1,0 +1,4 @@
+
+XDila.Gang = function () {
+
+}

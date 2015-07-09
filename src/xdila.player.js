@@ -55,8 +55,13 @@ XDila.Player = function (name,game) {
 
     };
 
-    this.init = function(game) {
+    this.init = function(game) {//reset
         this.game = game;
+        this.health = 100;
+        this.respect = 10;
+        this.currentCity = null;
+        this.Bank = new XDila.Bank(this);
+        this.drugs = {};
 
         // lets buy fake drugs for noww
         this.buyDrugs('grass',26,17);

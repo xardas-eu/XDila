@@ -19,8 +19,11 @@ var Game = {
 
         try {
             this.game.start(this.rootElement);
-            player.Bank.freeCash(200);
-            player.Bank.studentLoan(150);
+
+            $('.btn-replay').unbind().click(function(){
+                Game.game.start(Game.rootElement);
+            });
+
         } catch (e if e instanceof TypeError) {
             bootbox.alert('Sorry but the game failed embarassingly :( Please refresh the page. Geek details below.<br/><strong>'+e+'</strong><pre>'+ e.stack+'</pre>');
             $('.board').hide();
@@ -36,7 +39,23 @@ var Game = {
 
 
             this.game.addDrug('grass',      new XDila.Drug('Grass'      ,20 ,28 ,0.85, XDila.Drug.Grass));
-            this.game.addDrug('hash',       new XDila.Drug('Hash'       ,20 ,28 ,0.85, XDila.Drug.Grass));
+            this.game.addDrug('hash',       new XDila.Drug('Hash'       ,20 ,30 ,0.75, XDila.Drug.Grass));
+
+            this.game.addDrug('acid',       new XDila.Drug('Acid'       ,20 ,30 ,0.65, XDila.Drug.Acid));
+            this.game.addDrug('cpp',        new XDila.Drug('2-CP'       ,10 ,25 ,0.25, XDila.Drug.Acid));
+
+            this.game.addDrug('speed',      new XDila.Drug('Speed'      ,30 ,45 ,0.65, XDila.Drug.Speed));
+            this.game.addDrug('mephedrone', new XDila.Drug('Mephedrone' ,50 ,64 ,0.45, XDila.Drug.Speed));
+            this.game.addDrug('meth',       new XDila.Drug('Meth'       ,10 ,28 ,0.25, XDila.Drug.Speed));
+            this.game.addDrug('extasy',     new XDila.Drug('Extasy'     ,6  ,22 ,0.60, XDila.Drug.Extasy));
+
+
+            this.game.addDrug('coke',       new XDila.Drug('Cocaine'     ,100 ,150 ,0.55, XDila.Drug.Coke));
+            this.game.addDrug('heroin',     new XDila.Drug('Heroin'      ,40 ,59 ,0.55, XDila.Drug.Heroin));
+
+
+            this.game.addDrug('shrooms',     new XDila.Drug('Shrooms'    ,15 ,24 ,0.7, XDila.Drug.Shrooms));
+
 
             this.game.addCity('krakow', new XDila.City('Kraków'));
             this.game.addCity('warszwaa', new XDila.City('Warszawa'));

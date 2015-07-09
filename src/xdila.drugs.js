@@ -1,7 +1,45 @@
-XDila.Drug.Grass = function(game,old_price,used_as){ // Happy drug
-    if(Math.random()<0.33) {
-        game.UI.notify('You are lucky today! the price of this awesome ' + used_as + ' was supposed to be $' + old_price + ' but now is only $5 :) also the day is ' + game.day + ' ! 420!!');
-        return 5;
-    }
+XDila.Drug.Grass = function(game,old_price,used_as){ 
+    if(Math.random()<0.33) { return Math.ceil(old_price*0.75);}
+    if(Math.random()<0.2) { return Math.ceil(old_price*1.5);}
+
+    return old_price;
+};
+
+XDila.Drug.Speed = function(game,old_price,used_as){ 
+    if(Math.random()<0.22) { return Math.ceil(old_price*0.55);}
+    if(Math.random()<0.2) { return Math.ceil(old_price*4.0);}
+
+    return old_price;
+};
+
+XDila.Drug.Acid = function(game,old_price,used_as){ 
+    if(Math.random()<0.22) { return Math.ceil(old_price*0.55);}
+    if(Math.random()<0.2) { return Math.ceil(old_price*1.8);}
+
+    return old_price;
+};
+
+XDila.Drug.Extasy = function(game,old_price,used_as){ 
+    if(Math.random()<0.35) { return Math.ceil(old_price*0.55);}
+    if(Math.random()<0.2) { return Math.ceil(old_price*3.0);}
+
+    return old_price;
+};
+
+XDila.Drug.Shrooms = function(game,old_price,used_as){ 
+    if(Math.random()<0.20) { return Math.ceil(old_price*0.50);}
+    if(Math.random()<0.2) { return Math.ceil(old_price*2.5);}
+
+    return old_price;
+};
+
+XDila.Drug.Heroin = function(game,old_price,used_as){
+    return old_price;
+};
+
+XDila.Drug.Coke = function(game,old_price,used_as){ 
+    if(Math.random()<0.15) { return Math.ceil(old_price*0.25);}
+    if(Math.random()<0.2) { return Math.ceil(old_price*2.0);}
+
     return old_price;
 };

@@ -10,7 +10,7 @@ XDila.Bank = function (player) {
     this.debt = 0;
 
 
-    this.game.dispatcher.register('game.new-day.before',function(event){
+    this.game.dispatcher.unregister('game.new-day.before').register('game.new-day.before',function(event){
         // CAPITALIZE
         var self = event.caller().Player.Bank;
         self.bank                   += Math.ceil(self.bank*self._bankInterest);
@@ -21,6 +21,8 @@ XDila.Bank = function (player) {
 
     this.update = function() {
         this.game.UI.update();
+
+
 
         // bank update is expensive so it's done separately
         this.game.UI.bankUpdate();
@@ -34,16 +36,19 @@ XDila.Bank = function (player) {
 
         if(this.cash<amount) {
             amount -= this.cash;
+            this.debt -= this.cash;
             this.cash = 0;
         }
 
         if(this.cash) {
             this.cash -= amount;
+            this.debt -= amount;
             amount = 0;
         }
 
         if(amount) {
             this.bank -= amount;
+            this.debt -= amount;
             amount = 0;
         }
 
@@ -57,11 +62,13 @@ XDila.Bank = function (player) {
     }
 
     this.studentLoan = function(amount) {
+        this.game.UI.bankFlash('debt');
         this.debt += amount;
         this.update();
     }
 
     this.payCash = function(amount,msg) {
+        this.game.UI.bankFlash('cash');
         this.cash -= amount;
         if(msg) {
             this.game.UI.notify(msg);
@@ -75,6 +82,7 @@ XDila.Bank = function (player) {
 
     // for tests, bonuses etc
     this.freeCash = function(amount,msg) {
+        this.game.UI.bankFlash('cash');
         this.cash += amount;
         if(msg) {
             this.game.UI.notify(msg);
@@ -84,12 +92,14 @@ XDila.Bank = function (player) {
 
 
     this.loan = function(amount) {
+        this.game.UI.bankFlash();
         this.bank += amount;
         this.debt += amount;
         this.update();
     };
 
     this.repay = function(amount) {
+        this.game.UI.bankFlash();
         if(amount>this.debt) {
             amount = this.debt; // we're all human
         }
@@ -99,12 +109,14 @@ XDila.Bank = function (player) {
     }
 
     this.store = function(amount) {
+        this.game.UI.bankFlash('cash');
         this.cash -= amount;
         this.bank += amount;
         this.update();
     }
 
     this.withdraw = function(amount) {
+        this.game.UI.bankFlash('cash');
         this.cash += amount;
         this.bank -= amount;
         this.update();

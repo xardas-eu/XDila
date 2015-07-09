@@ -57,6 +57,7 @@ XDila.UI = function () {
     this._renderCities = function () {
         var tabs = this.root.find('.cities-tabs');
         var content = this.root.find('.cities-content .tab-content');
+        tabs.html(''); content.html();
         for (cityName in this.game.cities) {
             var cityObj = this.game.cities[cityName];
             var first = !content.html();
@@ -149,6 +150,16 @@ XDila.UI = function () {
     this.setInputError = function(field,error,message) {
     };
 
+
+    this.bankFlash = function(type) {
+        if(type) {
+            $('.' + type + '-stat').effect("highlight", {}, 500);
+        } else {
+            $('.cash-stat').effect("highlight", {}, 500);
+            $('.debt-stat').effect("highlight", {}, 500);
+
+        }
+    }
 
     this.bankUpdate = function() {
         var bank = this.game.Player.Bank;

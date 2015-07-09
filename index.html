@@ -63,7 +63,8 @@
                                 <p class="navbar-text" data-ui-element="current-day">0</p>
                             </li>
                             <li>
-                                <p class="navbar-text">of</p>
+                                <p class="navbar-text">of
+                                </p>
                             </li>
                             <li class="game-duration">
                                 <p class="navbar-text" data-ui-element="game-duration">0</p>
@@ -99,7 +100,7 @@
         </div>
         <div class="clearfix"></div>
 
-        <div class="row" style="min-height:300px;max-height:300px;">
+        <div class="row">
             <div class="col-sm-6">
                 <div class="col-xs-3"> <!-- required for floating -->
                     <!-- Nav tabs -->
@@ -110,7 +111,10 @@
                         <li><a                data-ui-element="tab-store-link" href="#left-store" data-toggle="tab">Store</a></li>
                         <li><a                data-ui-element="tab-health-link" href="#left-health" data-toggle="tab">Health</a></li>
                         <li><a                data-ui-element="tab-bank-link" href="#left-bank" data-toggle="tab"><strong>BANK</strong></a></li>
+                        <li>
+                            <button type="button" class="btn btn-primary btn-sm btn-replay"><span class="glyphicon glyphicon-repeat"></span> Replay</button>
 
+                        </li>
                     </ul>
                 </div>
 
@@ -196,7 +200,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="row notification-box" style="min-height: 300px;max-height: 300px;">
+        <div class="row notification-box">
 
             <div class="progress">
                 <div data-ui-element="player-health-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0"

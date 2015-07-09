@@ -4,8 +4,6 @@ $(document).ready(function(){
         this._transportCost = 2;
         this._transportRespectCost = -3;
 
-
-
         this.game = game;
         this.register = function() {
             var self = this;

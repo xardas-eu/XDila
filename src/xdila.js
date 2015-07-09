@@ -102,11 +102,18 @@ var XDila = function (days_limit) {
         }));
     };
 
+    this._startingCash = 200;
+    this._startingLoan = 150;
+
     this.start = function (root) {
         this.rootElement = root;
-
+        this.day = 0;
         this.UI.start(root, this);
         this.Player.init(this);
+
+        this.Player.Bank.freeCash(this._startingCash);
+        this.Player.Bank.studentLoan(this._startingLoan);
+
         // set the player in the first city
         this.goToCity(this.cities[Object.keys(this.cities)[0]]);
     }

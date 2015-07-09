@@ -8,6 +8,11 @@ XDila.Dispatcher = function () {
         this.events[event].push(callable);
     };
 
+    this.unregister = function (event) {
+        this.events[event] = [];
+        return this
+    };
+
     this.emit = function (event) {
         if (typeof(this.events[event.name]) !== 'undefined' && this.events[event.name].length) {
             //iterate over events

@@ -89,16 +89,31 @@
                             <li class="active respect-stat">
                                 <p class="navbar-text"><strong>RESPECT</strong>: <span data-ui-element="player-respect">0</span> </p>
                             </li>
+
+                            <li class="respect-stat">
+                                <p class="navbar-text"<strong>Capacity: </strong>    <span data-ui-element="drugs-capacity-left">0</span>/<span  data-ui-element="drugs-capacity-total">0</span>
+                                </p>
+                            </li>
                         </ul>
 
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
-
-
-
         </div>
         <div class="clearfix"></div>
+
+        <div class="middle-icons">
+
+            <button type="button" class="btn btn-default btn-sm" data-ui-element="buy-button">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm" data-ui-element="sell-button">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm" data-ui-element="drop-button">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </div>
 
         <div class="row">
             <div class="col-sm-6">
@@ -126,8 +141,9 @@
                                 <div>
 
                                 </div>
-
                             </div>
+
+
                         </div>
                         <div class="tab-pane" id="left-inventory">
                             <div data-ui-element="tab-inventory" class="page-header"><h2>Inventory</h2><div>&nbsp;</div></div>
@@ -201,7 +217,7 @@
         <div class="clearfix"></div>
 
         <div class="row notification-box">
-
+            <small>Right-click, doubleclick or use the arrows to buy, sell or drop drugs.</small>
             <div class="progress">
                 <div data-ui-element="player-health-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0"
                      aria-valuemin="0" aria-valuemax="100" style="width:0%">

@@ -85,3 +85,22 @@ display: none;
 .has-error {
     background-color: #ffaaaa;
 }
+
+.drugs-capacity {
+}
+
+.middle-icons {
+    left: 480px;
+    top: 200px;
+    position: absolute;
+    width: 24px;
+    z-index: 99;
+}
+
+.middle-icons button {
+    margin-bottom: 2px;
+}
+
+.drug-row-active {
+    background-color: skyblue !important;
+}

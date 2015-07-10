@@ -18,6 +18,7 @@ var Game = {
         } else {}
 
         try {
+
             this.game.start(this.rootElement);
 
             $('.btn-replay').unbind().click(function(){
@@ -47,7 +48,7 @@ var Game = {
             this.game.addDrug('speed',      new XDila.Drug('Speed'      ,30 ,45 ,0.65, XDila.Drug.Speed));
             this.game.addDrug('mephedrone', new XDila.Drug('Mephedrone' ,50 ,64 ,0.45, XDila.Drug.Speed));
             this.game.addDrug('meth',       new XDila.Drug('Meth'       ,10 ,28 ,0.25, XDila.Drug.Speed));
-            this.game.addDrug('extasy',     new XDila.Drug('Extasy'     ,6  ,22 ,0.60, XDila.Drug.Extasy));
+            this.game.addDrug('extasy',     new XDila.Drug('Extasy'     ,6  ,20 ,0.60, XDila.Drug.Extasy));
 
 
             this.game.addDrug('coke',       new XDila.Drug('Cocaine'     ,100 ,150 ,0.55, XDila.Drug.Coke));
@@ -58,7 +59,7 @@ var Game = {
 
 
             this.game.addCity('krakow', new XDila.City('Kraków'));
-            this.game.addCity('warszwaa', new XDila.City('Warszawa'));
+            this.game.addCity('warszawa', new XDila.City('Warszawa'));
             this.game.addCity('lodz', new XDila.City('Łódź'));
             this.game.addCity('wroclaw', new XDila.City('Wrocław'));
             this.game.addCity('poznan', new XDila.City('Poznań'));

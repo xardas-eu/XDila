@@ -22,6 +22,11 @@ $(document).ready(function(){
                 element.html('wait..');
                 // and select it, but that's UI job
                 UI.selectCityTab(event.args.current_city);
+
+                // some cleanup required
+                $('.city-drug-selected').removeClass('city-drug-selected').removeClass('drug-row-active').unbind().parent().unbind().remove();
+
+
                 var table = self.game.createCityDrugTable();
                 UI.renderCityDrugTab(event.args.current_city,table);
             });

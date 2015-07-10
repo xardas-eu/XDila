@@ -41,7 +41,8 @@ var XDila = function (days_limit) {
 
         $.each(this.drugs, function (internal_name, drug) {
             if(drug.willShowToday(self)) {
-                data[internal_name] = {'name':drug.name,'price':drug.getPrice(self)}
+                self.drugs[internal_name].price = drug.getPrice(self);
+                data[internal_name] = {'name':drug.name,'price':self.drugs[internal_name].price  }
             }
         });
         return data;
